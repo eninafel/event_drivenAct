@@ -27,3 +27,25 @@ handles the average, lowest, grade, and highest grade as parameters. The "GradeC
 "DisplayResults" method for presenting the calculated information from the user. After that it will determine the student's
 status, if the average is 75 or higher the application diplay "Result: PASSED" and if its below 75, the application display
 "Result:FAILED" 
+
+After that, it will determine the student’s final result based on the computed average. 
+If the average reaches the required passing grade, the program will display “Passed,” while if the average is below the required grade, it will display “Failed.” 
+The result will also show the average grade together with the lowest and highest grades entered by the user. 
+This allows the user to easily understand the overall performance of the student without manually calculating the grades.
+
+The programmer also used the delegate and event concepts to connect the calculation process with the result display. 
+The “GradeCalculatorHandler” delegate is responsible for handling the average, lowest grade, and highest grade values.
+When the calculation is completed, the “GradeCalculator” event is triggered and connected to the “DisplayResults” method. 
+This method receives the calculated information and displays the results on the Windows Form.
+
+During the testing of the application, different grade values were entered into the three TextBox fields to check if the calculator was working correctly. 
+The program was also tested using invalid inputs, such as letters and grades that were below 0 or above 100.
+When an invalid value was entered, the application displayed the appropriate error message instead of continuing the calculation. This helped ensure that the program only processes valid numerical grades.
+
+The project was successfully implemented using C# programming, Windows Forms, delegates, events, user input, arrays, loops, and basic mathematical operations. 
+The Student Grade Calculator provides a simple way to calculate and evaluate a student’s grades.
+Through this project, our team was able to demonstrate how delegates and events can be applied in a practical Windows Form application while also improving our understanding of C# programming and program logic.
+
+Overall, the development of the Student Grade Calculator helped our team understand how different programming concepts can work together in creating a functional application. 
+From designing the user interface, receiving user inputs, validating the grades, calculating the average, identifying the highest and lowest grades, and displaying the final result, each part contributed to completing the project. 
+The project also showed how proper organization of code and the use of events and delegates can make an application more organized and interactive.
