@@ -1,1 +1,29 @@
+Our team dicided which project should to create, we find a better project which is the "Student Grade Calculator"
+this project which it finals decision we create. Our programmer used C# programming with the concept of "delagates and event",
+visual studio code and vs.code.dev, to continue the implementation of a project, the assigned programmer continue to proceed 
+the process to create a project based on what was giving ideas. 
 
+The goal of this project is to demonstrate the use of C# programming with delegates concept, windows form, user input, and
+calculation. The programmer organized under "GROUP_1X" namespace and the project was designed for our project only(which is
+"Student Grade Calculator"). The application is to allow a user to enter student's name and three grade corresponding to Event1,
+Event2, Event3, then calculates the student's grade while identifying the lowest and highest grades and determine whether it's
+"Passed" or "Failed". During the process of our project, the programmer first put the basic components that users could 
+interact with. A "Label" and "TextBox" which created for Event1, Event2, and Event3 which this component where the grade could
+be enter. The calculator button was positioned below the input fields and was give a name in to "btnCalculate" so that the 
+calculation process will begin whenever the user clicked the button.
+
+The programmer apply the calculation code in "Form1.cs". Before used the mathematical operations, the code checks whether the 
+input value enter in the three(3) grade field (Event1, Event2, Event3) that can be conver in to numerical value using 
+"double.TryParse", if its invalid the number the compile shows the message "Please enter valid grades". The programmer added a 
+second layer which in each grade falls outside the allowed range, the program display the message "Grade must be between 0 and
+100".
+
+Once the valid number, the program stores them in an array name "grades". Out programmer initializes the "total" variable to
+calculate the value of the grade and start the "lowest" and "highest" variable using the variable in array. Our programmer 
+use "foreach" loop to process every grade to the total and compare the current grade with the lowest value either highest
+value(if the high number is foud). After the process of grades, our project-application calculates the student's average then
+dividing the total grades by the number in array which it has been stored. The delegate named "GradeCalculatorHandler" which
+handles the average, lowest, grade, and highest grade as parameters. The "GradeCalculator" event connect it to 
+"DisplayResults" method for presenting the calculated information from the user. After that it will determine the student's
+status, if the average is 75 or higher the application diplay "Result: PASSED" and if its below 75, the application display
+"Result:FAILED" 
