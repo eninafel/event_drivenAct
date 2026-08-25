@@ -9,7 +9,7 @@ namespace GenericCollectionActivity
         public delegate void GradeEvaluationHandler(
             string studentName,
             string subject,
-            double average,
+            double finalGrade,
             double lowest,
             double highest
         );
@@ -21,6 +21,7 @@ namespace GenericCollectionActivity
         public Form1()
         {
             InitializeComponent();
+
             GradeEvaluated += DisplayGradeResult;
         }
 
@@ -67,14 +68,11 @@ namespace GenericCollectionActivity
             grades.Add(quiz);
             grades.Add(exam);
 
-            double total = 0;
             double lowest = grades[0];
             double highest = grades[0];
 
             foreach (double grade in grades)
             {
-                total += grade;
-
                 if (grade < lowest)
                 {
                     lowest = grade;
@@ -86,12 +84,15 @@ namespace GenericCollectionActivity
                 }
             }
 
-            double average = total / grades.Count;
+            double finalGrade =
+                (performanceTask * 0.25) +
+                (quiz * 0.25) +
+                (exam * 0.50);
 
             GradeEvaluated?.Invoke(
                 studentName,
                 subject,
-                average,
+                finalGrade,
                 lowest,
                 highest
             );
@@ -100,26 +101,26 @@ namespace GenericCollectionActivity
         private void DisplayGradeResult(
             string studentName,
             string subject,
-            double average,
+            double finalGrade,
             double lowest,
             double highest
         )
         {
             lblStudentResult.Text = "Student: " + studentName;
             lblSubjectResult.Text = "Subject: " + subject;
-            lblAverage.Text = "Average: " + average.ToString("0.00");
+            lblFinalGrade.Text = "Final Grade: " + finalGrade.ToString("0.00");
             lblLowest.Text = "Lowest Grade: " + lowest.ToString("0.00");
             lblHighest.Text = "Highest Grade: " + highest.ToString("0.00");
 
-            if (average >= 75)
+            if (finalGrade >= 69)
             {
                 lblResult.Text = "Your grade in " + subject + " is " +
-                                 average.ToString("0.00") + " - PASSED";
+                                 finalGrade.ToString("0.00") + " - PASSED";
             }
             else
             {
                 lblResult.Text = "Your grade in " + subject + " is " +
-                                 average.ToString("0.00") + " - FAILED";
+                                 finalGrade.ToString("0.00") + " - FAILED";
             }
         }
 
@@ -135,7 +136,7 @@ namespace GenericCollectionActivity
 
             lblStudentResult.Text = "Student:";
             lblSubjectResult.Text = "Subject:";
-            lblAverage.Text = "Average:";
+            lblFinalGrade.Text = "Final Grade:";
             lblLowest.Text = "Lowest Grade:";
             lblHighest.Text = "Highest Grade:";
             lblResult.Text = "Your grade in this subject is:";
