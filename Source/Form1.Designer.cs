@@ -5,20 +5,30 @@ namespace GenericCollectionActivity
         private System.ComponentModel.IContainer components = null;
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblValue;
-        private System.Windows.Forms.TextBox txtValue;
-        private System.Windows.Forms.Button btnPush;
-        private System.Windows.Forms.Button btnPop;
-        private System.Windows.Forms.Button btnPeek;
-        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.GroupBox grpInput;
+        private System.Windows.Forms.Label lblStudentName;
+        private System.Windows.Forms.TextBox txtStudentName;
+        private System.Windows.Forms.Label lblSubject;
+        private System.Windows.Forms.TextBox txtSubject;
+        private System.Windows.Forms.Label lblPerformanceTask;
+        private System.Windows.Forms.TextBox txtPerformanceTask;
+        private System.Windows.Forms.Label lblQuiz;
+        private System.Windows.Forms.TextBox txtQuiz;
+        private System.Windows.Forms.Label lblExam;
+        private System.Windows.Forms.TextBox txtExam;
+        private System.Windows.Forms.Button btnEvaluate;
         private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Label lblStack;
-        private System.Windows.Forms.ListBox lstStack;
-        private System.Windows.Forms.Label lblCount;
+        private System.Windows.Forms.GroupBox grpResults;
+        private System.Windows.Forms.Label lblStudentResult;
+        private System.Windows.Forms.Label lblSubjectResult;
+        private System.Windows.Forms.Label lblAverage;
+        private System.Windows.Forms.Label lblLowest;
+        private System.Windows.Forms.Label lblHighest;
+        private System.Windows.Forms.Label lblResult;
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && components != null)
             {
                 components.Dispose();
             }
@@ -28,130 +38,160 @@ namespace GenericCollectionActivity
 
         private void InitializeComponent()
         {
-            lblTitle = new System.Windows.Forms.Label();
-            lblValue = new System.Windows.Forms.Label();
-            txtValue = new System.Windows.Forms.TextBox();
-            btnPush = new System.Windows.Forms.Button();
-            btnPop = new System.Windows.Forms.Button();
-            btnPeek = new System.Windows.Forms.Button();
-            btnSearch = new System.Windows.Forms.Button();
-            btnClear = new System.Windows.Forms.Button();
-            lblStack = new System.Windows.Forms.Label();
-            lstStack = new System.Windows.Forms.ListBox();
-            lblCount = new System.Windows.Forms.Label();
-            SuspendLayout();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.grpInput = new System.Windows.Forms.GroupBox();
+            this.lblStudentName = new System.Windows.Forms.Label();
+            this.txtStudentName = new System.Windows.Forms.TextBox();
+            this.lblSubject = new System.Windows.Forms.Label();
+            this.txtSubject = new System.Windows.Forms.TextBox();
+            this.lblPerformanceTask = new System.Windows.Forms.Label();
+            this.txtPerformanceTask = new System.Windows.Forms.TextBox();
+            this.lblQuiz = new System.Windows.Forms.Label();
+            this.txtQuiz = new System.Windows.Forms.TextBox();
+            this.lblExam = new System.Windows.Forms.Label();
+            this.txtExam = new System.Windows.Forms.TextBox();
+            this.btnEvaluate = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.grpResults = new System.Windows.Forms.GroupBox();
+            this.lblStudentResult = new System.Windows.Forms.Label();
+            this.lblSubjectResult = new System.Windows.Forms.Label();
+            this.lblAverage = new System.Windows.Forms.Label();
+            this.lblLowest = new System.Windows.Forms.Label();
+            this.lblHighest = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
 
- 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(500, 520);
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            Text = "Stack Application";
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
+            this.grpInput.SuspendLayout();
+            this.grpResults.SuspendLayout();
+            this.SuspendLayout();
 
-           
-            lblTitle.AutoSize = true;
-            lblTitle.Font = new System.Drawing.Font(
-                "Segoe UI",
-                16F,
-                System.Drawing.FontStyle.Bold);
-            lblTitle.Location = new System.Drawing.Point(165, 25);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new System.Drawing.Size(170, 30);
-            lblTitle.Text = "STACK APPLICATION";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Location = new System.Drawing.Point(120, 20);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(250, 32);
+            this.lblTitle.Text = "Student Calculator";
 
-           
-            lblValue.AutoSize = true;
-            lblValue.Location = new System.Drawing.Point(55, 85);
-            lblValue.Name = "lblValue";
-            lblValue.Size = new System.Drawing.Size(70, 15);
-            lblValue.Text = "Enter Value:";
+            this.grpInput.Controls.Add(this.lblStudentName);
+            this.grpInput.Controls.Add(this.txtStudentName);
+            this.grpInput.Controls.Add(this.lblSubject);
+            this.grpInput.Controls.Add(this.txtSubject);
+            this.grpInput.Controls.Add(this.lblPerformanceTask);
+            this.grpInput.Controls.Add(this.txtPerformanceTask);
+            this.grpInput.Controls.Add(this.lblQuiz);
+            this.grpInput.Controls.Add(this.txtQuiz);
+            this.grpInput.Controls.Add(this.lblExam);
+            this.grpInput.Controls.Add(this.txtExam);
+            this.grpInput.Location = new System.Drawing.Point(30, 75);
+            this.grpInput.Name = "grpInput";
+            this.grpInput.Size = new System.Drawing.Size(450, 260);
+            this.grpInput.Text = "Student Information and Grade Evaluation";
 
-            
-            txtValue.Location = new System.Drawing.Point(135, 82);
-            txtValue.Name = "txtValue";
-            txtValue.Size = new System.Drawing.Size(280, 23);
+            this.lblStudentName.AutoSize = true;
+            this.lblStudentName.Location = new System.Drawing.Point(25, 35);
+            this.lblStudentName.Text = "Student Name:";
 
-           
-            btnPush.Location = new System.Drawing.Point(55, 125);
-            btnPush.Name = "btnPush";
-            btnPush.Size = new System.Drawing.Size(80, 35);
-            btnPush.Text = "Push";
-            btnPush.UseVisualStyleBackColor = true;
-            btnPush.Click += new System.EventHandler(btnPush_Click);
+            this.txtStudentName.Location = new System.Drawing.Point(150, 32);
+            this.txtStudentName.Name = "txtStudentName";
+            this.txtStudentName.Size = new System.Drawing.Size(250, 23);
 
-            
-            btnPop.Location = new System.Drawing.Point(145, 125);
-            btnPop.Name = "btnPop";
-            btnPop.Size = new System.Drawing.Size(80, 35);
-            btnPop.Text = "Pop";
-            btnPop.UseVisualStyleBackColor = true;
-            btnPop.Click += new System.EventHandler(btnPop_Click);
+            this.lblSubject.AutoSize = true;
+            this.lblSubject.Location = new System.Drawing.Point(25, 75);
+            this.lblSubject.Text = "Subject:";
 
-           
-            btnPeek.Location = new System.Drawing.Point(235, 125);
-            btnPeek.Name = "btnPeek";
-            btnPeek.Size = new System.Drawing.Size(80, 35);
-            btnPeek.Text = "Peek";
-            btnPeek.UseVisualStyleBackColor = true;
-            btnPeek.Click += new System.EventHandler(btnPeek_Click);
+            this.txtSubject.Location = new System.Drawing.Point(150, 72);
+            this.txtSubject.Name = "txtSubject";
+            this.txtSubject.Size = new System.Drawing.Size(250, 23);
 
-            btnSearch.Location = new System.Drawing.Point(325, 125);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new System.Drawing.Size(90, 35);
-            btnSearch.Text = "Search";
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += new System.EventHandler(btnSearch_Click);
+            this.lblPerformanceTask.AutoSize = true;
+            this.lblPerformanceTask.Location = new System.Drawing.Point(25, 120);
+            this.lblPerformanceTask.Text = "Performance Task:";
 
-       
-            btnClear.Location = new System.Drawing.Point(205, 175);
-            btnClear.Name = "btnClear";
-            btnClear.Size = new System.Drawing.Size(90, 35);
-            btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = true;
-            btnClear.Click += new System.EventHandler(btnClear_Click);
+            this.txtPerformanceTask.Location = new System.Drawing.Point(150, 117);
+            this.txtPerformanceTask.Name = "txtPerformanceTask";
+            this.txtPerformanceTask.Size = new System.Drawing.Size(250, 23);
 
-    
-            lblStack.AutoSize = true;
-            lblStack.Font = new System.Drawing.Font(
-                "Segoe UI",
-                10F,
-                System.Drawing.FontStyle.Bold);
-            lblStack.Location = new System.Drawing.Point(55, 235);
-            lblStack.Name = "lblStack";
-            lblStack.Size = new System.Drawing.Size(98, 19);
-            lblStack.Text = "Stack Elements";
+            this.lblQuiz.AutoSize = true;
+            this.lblQuiz.Location = new System.Drawing.Point(25, 160);
+            this.lblQuiz.Text = "Quiz:";
 
-         
-            lstStack.FormattingEnabled = true;
-            lstStack.ItemHeight = 15;
-            lstStack.Location = new System.Drawing.Point(55, 265);
-            lstStack.Name = "lstStack";
-            lstStack.Size = new System.Drawing.Size(360, 139);
+            this.txtQuiz.Location = new System.Drawing.Point(150, 157);
+            this.txtQuiz.Name = "txtQuiz";
+            this.txtQuiz.Size = new System.Drawing.Size(250, 23);
 
-          
-            lblCount.AutoSize = true;
-            lblCount.Location = new System.Drawing.Point(55, 430);
-            lblCount.Name = "lblCount";
-            lblCount.Size = new System.Drawing.Size(142, 15);
-            lblCount.Text = "Number of Elements: 0";
+            this.lblExam.AutoSize = true;
+            this.lblExam.Location = new System.Drawing.Point(25, 200);
+            this.lblExam.Text = "Exam:";
 
-           
-            Controls.Add(lblTitle);
-            Controls.Add(lblValue);
-            Controls.Add(txtValue);
-            Controls.Add(btnPush);
-            Controls.Add(btnPop);
-            Controls.Add(btnPeek);
-            Controls.Add(btnSearch);
-            Controls.Add(btnClear);
-            Controls.Add(lblStack);
-            Controls.Add(lstStack);
-            Controls.Add(lblCount);
+            this.txtExam.Location = new System.Drawing.Point(150, 197);
+            this.txtExam.Name = "txtExam";
+            this.txtExam.Size = new System.Drawing.Size(250, 23);
 
-            ResumeLayout(false);
-            PerformLayout();
+            this.btnEvaluate.Location = new System.Drawing.Point(90, 355);
+            this.btnEvaluate.Name = "btnEvaluate";
+            this.btnEvaluate.Size = new System.Drawing.Size(150, 40);
+            this.btnEvaluate.Text = "Evaluate Grade";
+            this.btnEvaluate.UseVisualStyleBackColor = true;
+            this.btnEvaluate.Click += new System.EventHandler(this.btnEvaluate_Click);
+
+            this.btnClear.Location = new System.Drawing.Point(270, 355);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(150, 40);
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+
+            this.grpResults.Controls.Add(this.lblStudentResult);
+            this.grpResults.Controls.Add(this.lblSubjectResult);
+            this.grpResults.Controls.Add(this.lblAverage);
+            this.grpResults.Controls.Add(this.lblLowest);
+            this.grpResults.Controls.Add(this.lblHighest);
+            this.grpResults.Controls.Add(this.lblResult);
+            this.grpResults.Location = new System.Drawing.Point(30, 420);
+            this.grpResults.Name = "grpResults";
+            this.grpResults.Size = new System.Drawing.Size(450, 230);
+            this.grpResults.Text = "Grade Result";
+
+            this.lblStudentResult.AutoSize = true;
+            this.lblStudentResult.Location = new System.Drawing.Point(25, 30);
+            this.lblStudentResult.Text = "Student:";
+
+            this.lblSubjectResult.AutoSize = true;
+            this.lblSubjectResult.Location = new System.Drawing.Point(25, 60);
+            this.lblSubjectResult.Text = "Subject:";
+
+            this.lblAverage.AutoSize = true;
+            this.lblAverage.Location = new System.Drawing.Point(25, 90);
+            this.lblAverage.Text = "Average:";
+
+            this.lblLowest.AutoSize = true;
+            this.lblLowest.Location = new System.Drawing.Point(25, 120);
+            this.lblLowest.Text = "Lowest Grade:";
+
+            this.lblHighest.AutoSize = true;
+            this.lblHighest.Location = new System.Drawing.Point(25, 150);
+            this.lblHighest.Text = "Highest Grade:";
+
+            this.lblResult.AutoSize = true;
+            this.lblResult.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblResult.Location = new System.Drawing.Point(25, 185);
+            this.lblResult.Text = "Your grade in this subject is:";
+
+            this.ClientSize = new System.Drawing.Size(510, 680);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.grpInput);
+            this.Controls.Add(this.btnEvaluate);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.grpResults);
+            this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Student Calculator";
+
+            this.grpInput.ResumeLayout(false);
+            this.grpInput.PerformLayout();
+            this.grpResults.ResumeLayout(false);
+            this.grpResults.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
     }
 }
