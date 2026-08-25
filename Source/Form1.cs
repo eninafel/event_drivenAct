@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace GROUP_1X
+namespace GenericCollectionActivity
 {
     public partial class Form1 : Form
     {
@@ -21,7 +21,6 @@ namespace GROUP_1X
         public Form1()
         {
             InitializeComponent();
-
             GradeEvaluated += DisplayGradeResult;
         }
 
