@@ -21,7 +21,7 @@ namespace GenericCollectionActivity
         private System.Windows.Forms.GroupBox grpResults;
         private System.Windows.Forms.Label lblStudentResult;
         private System.Windows.Forms.Label lblSubjectResult;
-        private System.Windows.Forms.Label lblAverage;
+        private System.Windows.Forms.Label lblFinalGrade;
         private System.Windows.Forms.Label lblLowest;
         private System.Windows.Forms.Label lblHighest;
         private System.Windows.Forms.Label lblResult;
@@ -55,7 +55,7 @@ namespace GenericCollectionActivity
             this.grpResults = new System.Windows.Forms.GroupBox();
             this.lblStudentResult = new System.Windows.Forms.Label();
             this.lblSubjectResult = new System.Windows.Forms.Label();
-            this.lblAverage = new System.Windows.Forms.Label();
+            this.lblFinalGrade = new System.Windows.Forms.Label();
             this.lblLowest = new System.Windows.Forms.Label();
             this.lblHighest = new System.Windows.Forms.Label();
             this.lblResult = new System.Windows.Forms.Label();
@@ -65,10 +65,14 @@ namespace GenericCollectionActivity
             this.SuspendLayout();
 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(120, 20);
+            this.lblTitle.Font = new System.Drawing.Font(
+                "Segoe UI",
+                18F,
+                System.Drawing.FontStyle.Bold
+            );
+            this.lblTitle.Location = new System.Drawing.Point(125, 20);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(250, 32);
+            this.lblTitle.Size = new System.Drawing.Size(260, 32);
             this.lblTitle.Text = "Student Calculator";
 
             this.grpInput.Controls.Add(this.lblStudentName);
@@ -104,27 +108,27 @@ namespace GenericCollectionActivity
 
             this.lblPerformanceTask.AutoSize = true;
             this.lblPerformanceTask.Location = new System.Drawing.Point(25, 120);
-            this.lblPerformanceTask.Text = "Performance Task:";
+            this.lblPerformanceTask.Text = "Performance Task (25%):";
 
-            this.txtPerformanceTask.Location = new System.Drawing.Point(150, 117);
+            this.txtPerformanceTask.Location = new System.Drawing.Point(180, 117);
             this.txtPerformanceTask.Name = "txtPerformanceTask";
-            this.txtPerformanceTask.Size = new System.Drawing.Size(250, 23);
+            this.txtPerformanceTask.Size = new System.Drawing.Size(220, 23);
 
             this.lblQuiz.AutoSize = true;
             this.lblQuiz.Location = new System.Drawing.Point(25, 160);
-            this.lblQuiz.Text = "Quiz:";
+            this.lblQuiz.Text = "Quiz (25%):";
 
-            this.txtQuiz.Location = new System.Drawing.Point(150, 157);
+            this.txtQuiz.Location = new System.Drawing.Point(180, 157);
             this.txtQuiz.Name = "txtQuiz";
-            this.txtQuiz.Size = new System.Drawing.Size(250, 23);
+            this.txtQuiz.Size = new System.Drawing.Size(220, 23);
 
             this.lblExam.AutoSize = true;
             this.lblExam.Location = new System.Drawing.Point(25, 200);
-            this.lblExam.Text = "Exam:";
+            this.lblExam.Text = "Exam (50%):";
 
-            this.txtExam.Location = new System.Drawing.Point(150, 197);
+            this.txtExam.Location = new System.Drawing.Point(180, 197);
             this.txtExam.Name = "txtExam";
-            this.txtExam.Size = new System.Drawing.Size(250, 23);
+            this.txtExam.Size = new System.Drawing.Size(220, 23);
 
             this.btnEvaluate.Location = new System.Drawing.Point(90, 355);
             this.btnEvaluate.Name = "btnEvaluate";
@@ -142,7 +146,7 @@ namespace GenericCollectionActivity
 
             this.grpResults.Controls.Add(this.lblStudentResult);
             this.grpResults.Controls.Add(this.lblSubjectResult);
-            this.grpResults.Controls.Add(this.lblAverage);
+            this.grpResults.Controls.Add(this.lblFinalGrade);
             this.grpResults.Controls.Add(this.lblLowest);
             this.grpResults.Controls.Add(this.lblHighest);
             this.grpResults.Controls.Add(this.lblResult);
@@ -159,9 +163,9 @@ namespace GenericCollectionActivity
             this.lblSubjectResult.Location = new System.Drawing.Point(25, 60);
             this.lblSubjectResult.Text = "Subject:";
 
-            this.lblAverage.AutoSize = true;
-            this.lblAverage.Location = new System.Drawing.Point(25, 90);
-            this.lblAverage.Text = "Average:";
+            this.lblFinalGrade.AutoSize = true;
+            this.lblFinalGrade.Location = new System.Drawing.Point(25, 90);
+            this.lblFinalGrade.Text = "Final Grade:";
 
             this.lblLowest.AutoSize = true;
             this.lblLowest.Location = new System.Drawing.Point(25, 120);
@@ -172,7 +176,11 @@ namespace GenericCollectionActivity
             this.lblHighest.Text = "Highest Grade:";
 
             this.lblResult.AutoSize = true;
-            this.lblResult.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblResult.Font = new System.Drawing.Font(
+                "Segoe UI",
+                10F,
+                System.Drawing.FontStyle.Bold
+            );
             this.lblResult.Location = new System.Drawing.Point(25, 185);
             this.lblResult.Text = "Your grade in this subject is:";
 
@@ -183,7 +191,8 @@ namespace GenericCollectionActivity
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.grpResults);
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition =
+                System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Calculator";
 
             this.grpInput.ResumeLayout(false);
