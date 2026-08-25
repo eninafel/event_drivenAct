@@ -1,1 +1,42 @@
+Goals for this program is to change the array to List since its more capable than array.
+First what does list do? 
 
+List used for  a collection that stores multiple values of the same data type. 
+In this program, List<double> stores the student's Performance Task, Quiz, and Exam grades.
+Same as array when we called them , earlier this three were called Event1, Event2,Event 3. Now we upgrade it so the student
+wont be confused. 
+
+Now the double and list work together to The word double means that the List stores numerical values that may contain decimals. 
+For example, the List can store grades such as 85, 90, 78, or 89.5.
+After storing the grades, the program uses the values inside the List to calculate the average, lowest grade, and highest grade.
+This gives the generic collection an actual purpose in the application's functionality.
+
+Reason for Choosing List<double>
+List<double> was chosen because it is more flexible than a regular array.
+An array has a fixed size, meaning the number of elements is determined when the array is created. 
+In the previous version of the program, the array was limited to storing the three grade values:
+
+Why does list more better than array? 
+The main reason List<double> is better for this application is flexibility. 
+The previous array was created with a fixed number of grade values. 
+List<double> allows the program to manage the grade values more easily.
+
+ALSO the programmer changes a bit of our codes to be better.
+1. The Array Was Replaced with List<double>
+2. Grade Categories Were ImprovedThe previous grade inputs were changed to Performance Task , Quiz, Exam.
+3. Student Name was added
+4. Subject was added
+5. The Delegate and Event Were change as well , the delegate that need to define and pass
+information will be passed after the grade evaluation is completed. 
+while event notifies the application when the grade evaluation is finished.
+
+Program Flow
+
+The user enters the student name and subject. The user then enters the grades for the 
+Performance Task, Quiz, and Exam. When the Evaluate Grade button is clicked, the program validates the grade inputs using double.
+TryParse. The valid grades are stored in the List<double> generic collection. 
+The program then processes the values inside the List to calculate the average, lowest grade, and highest grade. 
+After the calculation is completed, the GradeEvaluated event is triggered. 
+The GradeEvaluationHandler delegate passes the student information and calculated results to the DisplayGradeResult method. 
+Finally, the application displays the student's grade evaluation, 
+including the subject, average, lowest grade, highest grade, and whether the student passed or failed.
