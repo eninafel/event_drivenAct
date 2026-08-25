@@ -1,129 +1,147 @@
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace GenericCollectionActivity
+namespace GROUP_1X
 {
     public partial class Form1 : Form
     {
-        private Stack stack = new Stack();
+        public delegate void GradeEvaluationHandler(
+            string studentName,
+            string subject,
+            double average,
+            double lowest,
+            double highest
+        );
+
+        public event GradeEvaluationHandler GradeEvaluated;
+
+        private List<double> grades = new List<double>();
 
         public Form1()
         {
             InitializeComponent();
+
+            GradeEvaluated += DisplayGradeResult;
         }
 
-        private void btnPush_Click(object sender, EventArgs e)
+        private void btnEvaluate_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(txtValue.Text, out int value))
-            {
-                stack.Push(value);
-                UpdateList();
-                txtValue.Clear();
-                txtValue.Focus();
-            }
-            else
-            {
-                MessageBox.Show(
-                    "Please enter a valid number.",
-                    "Invalid Input",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-            }
-        }
+            string studentName = txtStudentName.Text.Trim();
+            string subject = txtSubject.Text.Trim();
 
-        private void btnPop_Click(object sender, EventArgs e)
-        {
-            int value = stack.Pop();
+            double performanceTask;
+            double quiz;
+            double exam;
 
-            if (value == -1)
+            if (string.IsNullOrWhiteSpace(studentName))
             {
-                MessageBox.Show(
-                    "Stack is empty.",
-                    "Pop",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("Please enter the student name.");
+                return;
             }
-            else
-            {
-                MessageBox.Show(
-                    "Popped value: " + value,
-                    "Pop",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
 
-                UpdateList();
+            if (string.IsNullOrWhiteSpace(subject))
+            {
+                MessageBox.Show("Please enter the subject.");
+                return;
             }
-        }
 
-        private void btnPeek_Click(object sender, EventArgs e)
-        {
-            int value = stack.Peek();
-
-            if (value == -1)
+            if (!double.TryParse(txtPerformanceTask.Text, out performanceTask) ||
+                !double.TryParse(txtQuiz.Text, out quiz) ||
+                !double.TryParse(txtExam.Text, out exam))
             {
-                MessageBox.Show(
-                    "Stack is empty.",
-                    "Peek",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MessageBox.Show("Please enter valid grades.");
+                return;
             }
-            else
-            {
-                MessageBox.Show(
-                    "Top value: " + value,
-                    "Peek",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
-        }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (int.TryParse(txtValue.Text, out int value))
+            if (performanceTask < 0 || performanceTask > 100 ||
+                quiz < 0 || quiz > 100 ||
+                exam < 0 || exam > 100)
             {
-                if (stack.Search(value))
+                MessageBox.Show("Grades must be between 0 and 100.");
+                return;
+            }
+
+            grades.Clear();
+
+            grades.Add(performanceTask);
+            grades.Add(quiz);
+            grades.Add(exam);
+
+            double total = 0;
+            double lowest = grades[0];
+            double highest = grades[0];
+
+            foreach (double grade in grades)
+            {
+                total += grade;
+
+                if (grade < lowest)
                 {
-                    MessageBox.Show(
-                        value + " was found in the stack.",
-                        "Search",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    lowest = grade;
                 }
-                else
+
+                if (grade > highest)
                 {
-                    MessageBox.Show(
-                        value + " was not found in the stack.",
-                        "Search",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    highest = grade;
                 }
             }
+
+            double average = total / grades.Count;
+
+            GradeEvaluated?.Invoke(
+                studentName,
+                subject,
+                average,
+                lowest,
+                highest
+            );
+        }
+
+        private void DisplayGradeResult(
+            string studentName,
+            string subject,
+            double average,
+            double lowest,
+            double highest
+        )
+        {
+            lblStudentResult.Text = "Student: " + studentName;
+            lblSubjectResult.Text = "Subject: " + subject;
+            lblAverage.Text = "Average: " + average.ToString("0.00");
+            lblLowest.Text = "Lowest Grade: " + lowest.ToString("0.00");
+            lblHighest.Text = "Highest Grade: " + highest.ToString("0.00");
+
+            if (average >= 75)
+            {
+                lblResult.Text = "Your grade in " + subject + " is " +
+                                 average.ToString("0.00") + " - PASSED";
+            }
             else
             {
-                MessageBox.Show(
-                    "Please enter a valid number.",
-                    "Invalid Input",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                lblResult.Text = "Your grade in " + subject + " is " +
+                                 average.ToString("0.00") + " - FAILED";
             }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            stack.Clear();
-            UpdateList();
-        }
+            txtStudentName.Clear();
+            txtSubject.Clear();
+            txtPerformanceTask.Clear();
+            txtQuiz.Clear();
+            txtExam.Clear();
 
-        private void UpdateList()
-        {
-            lstStack.Items.Clear();
+            grades.Clear();
 
-            for (int i = stack.GetItems().Count - 1; i >= 0; i--)
-            {
-                lstStack.Items.Add(stack.GetItems()[i]);
-            }
+            lblStudentResult.Text = "Student:";
+            lblSubjectResult.Text = "Subject:";
+            lblAverage.Text = "Average:";
+            lblLowest.Text = "Lowest Grade:";
+            lblHighest.Text = "Highest Grade:";
+            lblResult.Text = "Your grade in this subject is:";
 
-            lblCount.Text = "Number of Elements: " + stack.Count();
+            txtStudentName.Focus();
         }
     }
 }
