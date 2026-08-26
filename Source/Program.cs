@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace GROUP_1X
+namespace GenericCollectionActivity
 {
     internal static class Program
     {

@@ -1,0 +1,375 @@
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace GenericCollectionActivity
+{
+    partial class Form1
+    {
+        private System.ComponentModel.IContainer components = null;
+        private static readonly Color AccentColor = Color.FromArgb(76, 111, 255); 
+        private static readonly Color AccentDark = Color.FromArgb(45, 74, 199);
+        private static readonly Color BackgroundColor = Color.FromArgb(240, 242, 247);
+        private static readonly Color CardColor = Color.White;
+        private static readonly Color PassColor = Color.FromArgb(34, 160, 90);
+        private static readonly Color FailColor = Color.FromArgb(214, 69, 69);
+        private static readonly Color MutedText = Color.FromArgb(110, 116, 130);
+
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblSubtitle;
+
+        private System.Windows.Forms.Panel pnlInputCard;
+        private System.Windows.Forms.Panel pnlInputAccent;
+        private System.Windows.Forms.Label lblInputHeader;
+        private System.Windows.Forms.Label lblStudentName;
+        private System.Windows.Forms.TextBox txtStudentName;
+        private System.Windows.Forms.Label lblSubject;
+        private System.Windows.Forms.TextBox txtSubject;
+        private System.Windows.Forms.Label lblPerformanceTask;
+        private System.Windows.Forms.TextBox txtPerformanceTask;
+        private System.Windows.Forms.Label lblPerformanceTaskWeight;
+        private System.Windows.Forms.Label lblQuiz;
+        private System.Windows.Forms.TextBox txtQuiz;
+        private System.Windows.Forms.Label lblQuizSlash;
+        private System.Windows.Forms.TextBox txtQuizTotal;
+        private System.Windows.Forms.Label lblQuizHint;
+        private System.Windows.Forms.Label lblQuizWeight;
+        private System.Windows.Forms.Label lblExam;
+        private System.Windows.Forms.TextBox txtExam;
+        private System.Windows.Forms.Label lblExamSlash;
+        private System.Windows.Forms.TextBox txtExamTotal;
+        private System.Windows.Forms.Label lblExamHint;
+        private System.Windows.Forms.Label lblExamWeight;
+
+        private System.Windows.Forms.Button btnEvaluate;
+        private System.Windows.Forms.Button btnClear;
+
+        private System.Windows.Forms.Panel pnlResultsCard;
+        private System.Windows.Forms.Panel pnlResultsAccent;
+        private System.Windows.Forms.Label lblResultsHeader;
+        private System.Windows.Forms.Label lblStudentResult;
+        private System.Windows.Forms.Label lblSubjectResult;
+        private System.Windows.Forms.Label lblAverage;
+        private System.Windows.Forms.Label lblLowest;
+        private System.Windows.Forms.Label lblHighest;
+        private System.Windows.Forms.Panel pnlResultDivider;
+        private System.Windows.Forms.Label lblResult;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && components != null)
+            {
+                components.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+
+        private void InitializeComponent()
+        {
+            this.lblTitle = new Label();
+            this.lblSubtitle = new Label();
+
+            this.pnlInputCard = new Panel();
+            this.pnlInputAccent = new Panel();
+            this.lblInputHeader = new Label();
+            this.lblStudentName = new Label();
+            this.txtStudentName = new TextBox();
+            this.lblSubject = new Label();
+            this.txtSubject = new TextBox();
+            this.lblPerformanceTask = new Label();
+            this.txtPerformanceTask = new TextBox();
+            this.lblPerformanceTaskWeight = new Label();
+            this.lblQuiz = new Label();
+            this.txtQuiz = new TextBox();
+            this.lblQuizSlash = new Label();
+            this.txtQuizTotal = new TextBox();
+            this.lblQuizHint = new Label();
+            this.lblQuizWeight = new Label();
+            this.lblExam = new Label();
+            this.txtExam = new TextBox();
+            this.lblExamSlash = new Label();
+            this.txtExamTotal = new TextBox();
+            this.lblExamHint = new Label();
+            this.lblExamWeight = new Label();
+
+            this.btnEvaluate = new Button();
+            this.btnClear = new Button();
+
+            this.pnlResultsCard = new Panel();
+            this.pnlResultsAccent = new Panel();
+            this.lblResultsHeader = new Label();
+            this.lblStudentResult = new Label();
+            this.lblSubjectResult = new Label();
+            this.lblAverage = new Label();
+            this.lblLowest = new Label();
+            this.lblHighest = new Label();
+            this.pnlResultDivider = new Panel();
+            this.lblResult = new Label();
+
+            this.pnlInputCard.SuspendLayout();
+            this.pnlResultsCard.SuspendLayout();
+            this.SuspendLayout();
+
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            this.lblTitle.ForeColor = Color.FromArgb(35, 40, 55);
+            this.lblTitle.Location = new Point(30, 25);
+            this.lblTitle.Text = "Student Grade Calculator";
+
+            this.lblSubtitle.AutoSize = true;
+            this.lblSubtitle.Font = new Font("Segoe UI", 9.5F);
+            this.lblSubtitle.ForeColor = MutedText;
+            this.lblSubtitle.Location = new Point(32, 62);
+            this.lblSubtitle.Text = "Performance Task 25%   \u2022   Quiz 25%   \u2022   Exam 50%";
+
+            this.pnlInputCard.BackColor = CardColor;
+            this.pnlInputCard.Location = new Point(30, 95);
+            this.pnlInputCard.Size = new Size(520, 300);
+            this.pnlInputCard.Controls.Add(this.lblInputHeader);
+            this.pnlInputCard.Controls.Add(this.lblStudentName);
+            this.pnlInputCard.Controls.Add(this.txtStudentName);
+            this.pnlInputCard.Controls.Add(this.lblSubject);
+            this.pnlInputCard.Controls.Add(this.txtSubject);
+            this.pnlInputCard.Controls.Add(this.lblPerformanceTask);
+            this.pnlInputCard.Controls.Add(this.txtPerformanceTask);
+            this.pnlInputCard.Controls.Add(this.lblPerformanceTaskWeight);
+            this.pnlInputCard.Controls.Add(this.lblQuiz);
+            this.pnlInputCard.Controls.Add(this.txtQuiz);
+            this.pnlInputCard.Controls.Add(this.lblQuizSlash);
+            this.pnlInputCard.Controls.Add(this.txtQuizTotal);
+            this.pnlInputCard.Controls.Add(this.lblQuizHint);
+            this.pnlInputCard.Controls.Add(this.lblQuizWeight);
+            this.pnlInputCard.Controls.Add(this.lblExam);
+            this.pnlInputCard.Controls.Add(this.txtExam);
+            this.pnlInputCard.Controls.Add(this.lblExamSlash);
+            this.pnlInputCard.Controls.Add(this.txtExamTotal);
+            this.pnlInputCard.Controls.Add(this.lblExamHint);
+            this.pnlInputCard.Controls.Add(this.lblExamWeight);
+            this.pnlInputCard.Controls.Add(this.pnlInputAccent);
+
+            this.pnlInputAccent.BackColor = AccentColor;
+            this.pnlInputAccent.Dock = DockStyle.Top;
+            this.pnlInputAccent.Height = 6;
+
+            this.lblInputHeader.AutoSize = true;
+            this.lblInputHeader.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            this.lblInputHeader.ForeColor = Color.FromArgb(35, 40, 55);
+            this.lblInputHeader.Location = new Point(24, 22);
+            this.lblInputHeader.Text = "Student Information";
+
+            this.lblStudentName.AutoSize = true;
+            this.lblStudentName.Font = new Font("Segoe UI", 9.5F);
+            this.lblStudentName.Location = new Point(24, 62);
+            this.lblStudentName.Text = "Student Name";
+
+            this.txtStudentName.Location = new Point(24, 82);
+            this.txtStudentName.Size = new Size(470, 25);
+            this.txtStudentName.Font = new Font("Segoe UI", 10F);
+            this.txtStudentName.BorderStyle = BorderStyle.FixedSingle;
+
+            this.lblSubject.AutoSize = true;
+            this.lblSubject.Font = new Font("Segoe UI", 9.5F);
+            this.lblSubject.Location = new Point(24, 118);
+            this.lblSubject.Text = "Subject";
+
+            this.txtSubject.Location = new Point(24, 138);
+            this.txtSubject.Size = new Size(470, 25);
+            this.txtSubject.Font = new Font("Segoe UI", 10F);
+            this.txtSubject.BorderStyle = BorderStyle.FixedSingle;
+
+            this.lblPerformanceTask.AutoSize = true;
+            this.lblPerformanceTask.Font = new Font("Segoe UI", 9.5F);
+            this.lblPerformanceTask.Location = new Point(24, 178);
+            this.lblPerformanceTask.Text = "Performance Task";
+
+            this.lblPerformanceTaskWeight.AutoSize = true;
+            this.lblPerformanceTaskWeight.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            this.lblPerformanceTaskWeight.ForeColor = AccentColor;
+            this.lblPerformanceTaskWeight.Location = new Point(450, 178);
+            this.lblPerformanceTaskWeight.Text = "25%";
+
+            this.txtPerformanceTask.Location = new Point(24, 198);
+            this.txtPerformanceTask.Size = new Size(470, 25);
+            this.txtPerformanceTask.Font = new Font("Segoe UI", 10F);
+            this.txtPerformanceTask.BorderStyle = BorderStyle.FixedSingle;
+
+            this.lblQuiz.AutoSize = true;
+            this.lblQuiz.Font = new Font("Segoe UI", 9.5F);
+            this.lblQuiz.Location = new Point(24, 234);
+            this.lblQuiz.Text = "Quiz";
+
+            this.lblQuizWeight.AutoSize = true;
+            this.lblQuizWeight.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            this.lblQuizWeight.ForeColor = AccentColor;
+            this.lblQuizWeight.Location = new Point(450, 234);
+            this.lblQuizWeight.Text = "25%";
+
+            this.txtQuiz.Location = new Point(24, 254);
+            this.txtQuiz.Size = new Size(90, 25);
+            this.txtQuiz.Font = new Font("Segoe UI", 10F);
+            this.txtQuiz.BorderStyle = BorderStyle.FixedSingle;
+            this.txtQuiz.TextAlign = HorizontalAlignment.Center;
+
+            this.lblQuizSlash.AutoSize = true;
+            this.lblQuizSlash.Font = new Font("Segoe UI", 11F);
+            this.lblQuizSlash.ForeColor = MutedText;
+            this.lblQuizSlash.Location = new Point(120, 258);
+            this.lblQuizSlash.Text = "/";
+
+            this.txtQuizTotal.Location = new Point(140, 254);
+            this.txtQuizTotal.Size = new Size(90, 25);
+            this.txtQuizTotal.Font = new Font("Segoe UI", 10F);
+            this.txtQuizTotal.BorderStyle = BorderStyle.FixedSingle;
+            this.txtQuizTotal.TextAlign = HorizontalAlignment.Center;
+
+            this.lblQuizHint.AutoSize = true;
+            this.lblQuizHint.Font = new Font("Segoe UI", 8.5F);
+            this.lblQuizHint.ForeColor = MutedText;
+            this.lblQuizHint.Location = new Point(238, 258);
+            this.lblQuizHint.Text = "items total";
+
+            this.lblExam.AutoSize = true;
+            this.lblExam.Font = new Font("Segoe UI", 9.5F);
+            this.lblExam.Location = new Point(24, 234 + 46);
+            this.lblExam.Text = "Exam";
+
+            this.lblExamWeight.AutoSize = true;
+            this.lblExamWeight.Font = new Font("Segoe UI", 8F, FontStyle.Bold);
+            this.lblExamWeight.ForeColor = AccentColor;
+            this.lblExamWeight.Location = new Point(450, 234 + 46);
+            this.lblExamWeight.Text = "50%";
+
+            this.pnlInputCard.Size = new Size(520, 330);
+            this.txtExam.Location = new Point(24, 254 + 46);
+            this.txtExam.Size = new Size(90, 25);
+            this.txtExam.Font = new Font("Segoe UI", 10F);
+            this.txtExam.BorderStyle = BorderStyle.FixedSingle;
+            this.txtExam.TextAlign = HorizontalAlignment.Center;
+
+            this.lblExamSlash.AutoSize = true;
+            this.lblExamSlash.Font = new Font("Segoe UI", 11F);
+            this.lblExamSlash.ForeColor = MutedText;
+            this.lblExamSlash.Location = new Point(120, 258 + 46);
+            this.lblExamSlash.Text = "/";
+
+            this.txtExamTotal.Location = new Point(140, 254 + 46);
+            this.txtExamTotal.Size = new Size(90, 25);
+            this.txtExamTotal.Font = new Font("Segoe UI", 10F);
+            this.txtExamTotal.BorderStyle = BorderStyle.FixedSingle;
+            this.txtExamTotal.TextAlign = HorizontalAlignment.Center;
+
+            this.lblExamHint.AutoSize = true;
+            this.lblExamHint.Font = new Font("Segoe UI", 8.5F);
+            this.lblExamHint.ForeColor = MutedText;
+            this.lblExamHint.Location = new Point(238, 258 + 46);
+            this.lblExamHint.Text = "items total";
+
+            this.btnEvaluate.Location = new Point(140, 445);
+            this.btnEvaluate.Size = new Size(160, 42);
+            this.btnEvaluate.Text = "Evaluate Grade";
+            this.btnEvaluate.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            this.btnEvaluate.BackColor = AccentColor;
+            this.btnEvaluate.ForeColor = Color.White;
+            this.btnEvaluate.FlatStyle = FlatStyle.Flat;
+            this.btnEvaluate.FlatAppearance.BorderSize = 0;
+            this.btnEvaluate.FlatAppearance.MouseOverBackColor = AccentDark;
+            this.btnEvaluate.Cursor = Cursors.Hand;
+            this.btnEvaluate.Click += new System.EventHandler(this.btnEvaluate_Click);
+
+            this.btnClear.Location = new Point(320, 445);
+            this.btnClear.Size = new Size(140, 42);
+            this.btnClear.Text = "Clear";
+            this.btnClear.Font = new Font("Segoe UI", 10F);
+            this.btnClear.BackColor = Color.FromArgb(228, 231, 238);
+            this.btnClear.ForeColor = Color.FromArgb(60, 65, 80);
+            this.btnClear.FlatStyle = FlatStyle.Flat;
+            this.btnClear.FlatAppearance.BorderSize = 0;
+            this.btnClear.FlatAppearance.MouseOverBackColor = Color.FromArgb(210, 214, 224);
+            this.btnClear.Cursor = Cursors.Hand;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+
+            this.pnlResultsCard.BackColor = CardColor;
+            this.pnlResultsCard.Location = new Point(30, 505);
+            this.pnlResultsCard.Size = new Size(520, 320);
+            this.pnlResultsCard.Controls.Add(this.lblResultsHeader);
+            this.pnlResultsCard.Controls.Add(this.lblStudentResult);
+            this.pnlResultsCard.Controls.Add(this.lblSubjectResult);
+            this.pnlResultsCard.Controls.Add(this.lblAverage);
+            this.pnlResultsCard.Controls.Add(this.lblLowest);
+            this.pnlResultsCard.Controls.Add(this.lblHighest);
+            this.pnlResultsCard.Controls.Add(this.pnlResultDivider);
+            this.pnlResultsCard.Controls.Add(this.lblResult);
+            this.pnlResultsCard.Controls.Add(this.pnlResultsAccent);
+
+            this.pnlResultsAccent.BackColor = AccentColor;
+            this.pnlResultsAccent.Dock = DockStyle.Top;
+            this.pnlResultsAccent.Height = 6;
+
+            this.lblResultsHeader.AutoSize = true;
+            this.lblResultsHeader.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            this.lblResultsHeader.ForeColor = Color.FromArgb(35, 40, 55);
+            this.lblResultsHeader.Location = new Point(24, 22);
+            this.lblResultsHeader.Text = "Grade Result";
+
+            this.lblStudentResult.AutoSize = true;
+            this.lblStudentResult.Font = new Font("Segoe UI", 10F);
+            this.lblStudentResult.ForeColor = Color.FromArgb(60, 65, 80);
+            this.lblStudentResult.Location = new Point(24, 62);
+            this.lblStudentResult.Text = "Student: \u2014";
+
+            this.lblSubjectResult.AutoSize = true;
+            this.lblSubjectResult.Font = new Font("Segoe UI", 10F);
+            this.lblSubjectResult.ForeColor = Color.FromArgb(60, 65, 80);
+            this.lblSubjectResult.Location = new Point(24, 92);
+            this.lblSubjectResult.Text = "Subject: \u2014";
+
+            this.lblAverage.AutoSize = true;
+            this.lblAverage.Font = new Font("Segoe UI", 10F);
+            this.lblAverage.ForeColor = Color.FromArgb(60, 65, 80);
+            this.lblAverage.Location = new Point(24, 122);
+            this.lblAverage.Text = "Weighted Average: \u2014";
+
+            this.lblLowest.AutoSize = true;
+            this.lblLowest.Font = new Font("Segoe UI", 10F);
+            this.lblLowest.ForeColor = Color.FromArgb(60, 65, 80);
+            this.lblLowest.Location = new Point(24, 152);
+            this.lblLowest.Text = "Lowest Component: \u2014";
+
+            this.lblHighest.AutoSize = true;
+            this.lblHighest.Font = new Font("Segoe UI", 10F);
+            this.lblHighest.ForeColor = Color.FromArgb(60, 65, 80);
+            this.lblHighest.Location = new Point(24, 182);
+            this.lblHighest.Text = "Highest Component: \u2014";
+
+            this.pnlResultDivider.BackColor = Color.FromArgb(232, 234, 240);
+            this.pnlResultDivider.Location = new Point(24, 222);
+            this.pnlResultDivider.Size = new Size(470, 1);
+
+            this.lblResult.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            this.lblResult.ForeColor = MutedText;
+            this.lblResult.Location = new Point(24, 244);
+            this.lblResult.Size = new Size(470, 60);
+            this.lblResult.Text = "Enter grades and click Evaluate Grade.";
+
+            this.AutoScaleMode = AutoScaleMode.Font;
+            this.BackColor = BackgroundColor;
+            this.ClientSize = new Size(580, 855);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lblSubtitle);
+            this.Controls.Add(this.pnlInputCard);
+            this.Controls.Add(this.btnEvaluate);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.pnlResultsCard);
+            this.Name = "Form1";
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Text = "Student Grade Calculator";
+
+            this.pnlInputCard.ResumeLayout(false);
+            this.pnlInputCard.PerformLayout();
+            this.pnlResultsCard.ResumeLayout(false);
+            this.pnlResultsCard.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+        }
+    }
+}

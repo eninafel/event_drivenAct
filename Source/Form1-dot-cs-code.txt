@@ -1,0 +1,178 @@
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace GenericCollectionActivity
+{
+    public partial class Form1 : Form
+    {
+        private readonly struct GradeComponent
+        {
+            public string Name { get; }
+            public double Score { get; }
+            public double Weight { get; }
+
+            public GradeComponent(string name, double score, double weight)
+            {
+                Name = name;
+                Score = score;
+                Weight = weight;
+            }
+
+            public double WeightedScore => Score * Weight;
+        }
+
+        private delegate void GradeEvaluationHandler(
+            string studentName,
+            string subject,
+            double weightedAverage,
+            GradeComponent lowest,
+            GradeComponent highest,
+            bool passed
+        );
+
+        private event GradeEvaluationHandler GradeEvaluated;
+
+        private const double PassingGrade = 75.0;
+        private const double PerformanceTaskWeight = 0.25;
+        private const double QuizWeight = 0.25;
+        private const double ExamWeight = 0.50;
+        private List<GradeComponent> gradeComponents = new List<GradeComponent>();
+
+        public Form1()
+        {
+            InitializeComponent();
+            GradeEvaluated += DisplayGradeResult;
+        }
+
+        private void btnEvaluate_Click(object sender, EventArgs e)
+        {
+            string studentName = txtStudentName.Text.Trim();
+            string subject = txtSubject.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(studentName))
+            {
+                ShowValidationError("Please enter the student name.", txtStudentName);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(subject))
+            {
+                ShowValidationError("Please enter the subject.", txtSubject);
+                return;
+            }
+
+            if (!TryParseGrade(txtPerformanceTask.Text, out double performanceTask))
+            {
+                ShowValidationError("Please enter a valid Performance Task grade (0-100).", txtPerformanceTask);
+                return;
+            }
+
+            if (!TryParseRawScore(txtQuiz.Text, txtQuizTotal.Text, out double quizPercentage))
+            {
+                ShowValidationError(
+                    "Please enter a valid Quiz score and total items (score must be between 0 and the total, total must be greater than 0).",
+                    txtQuiz);
+                return;
+            }
+
+            if (!TryParseRawScore(txtExam.Text, txtExamTotal.Text, out double examPercentage))
+            {
+                ShowValidationError(
+                    "Please enter a valid Exam score and total items (score must be between 0 and the total, total must be greater than 0).",
+                    txtExam);
+                return;
+            }
+
+            gradeComponents = new List<GradeComponent>
+            {
+                new GradeComponent("Performance Task", performanceTask, PerformanceTaskWeight),
+                new GradeComponent("Quiz", quizPercentage, QuizWeight),
+                new GradeComponent("Exam", examPercentage, ExamWeight)
+            };
+
+            double weightedAverage = gradeComponents.Sum(c => c.WeightedScore);
+
+            GradeComponent lowest = gradeComponents.OrderBy(c => c.Score).First();
+            GradeComponent highest = gradeComponents.OrderByDescending(c => c.Score).First();
+
+            bool passed = weightedAverage >= PassingGrade;
+
+            GradeEvaluated?.Invoke(studentName, subject, weightedAverage, lowest, highest, passed);
+        }
+
+        private static bool TryParseGrade(string input, out double value)
+        {
+            return double.TryParse(input, out value) && value >= 0 && value <= 100;
+        }
+
+        private static bool TryParseRawScore(string scoreText, string totalText, out double percentage)
+        {
+            percentage = 0;
+
+            if (!double.TryParse(scoreText, out double score)) return false;
+            if (!double.TryParse(totalText, out double total)) return false;
+            if (total <= 0) return false;
+            if (score < 0 || score > total) return false;
+
+            percentage = (score / total) * 100.0;
+            return true;
+        }
+
+        private void ShowValidationError(string message, Control controlToFocus)
+        {
+            MessageBox.Show(message, "Check your input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            controlToFocus.Focus();
+        }
+
+        private void DisplayGradeResult(
+    string studentName,
+    string subject,
+    double weightedAverage,
+    GradeComponent lowest,
+    GradeComponent highest,
+    bool passed)
+        {
+            lblStudentResult.Text = "Student: " + studentName;
+            lblSubjectResult.Text = "Subject: " + subject;
+            lblAverage.Text = "Weighted Average: " + weightedAverage.ToString("0.00") + "%";
+            lblLowest.Text = $"Lowest Component: {lowest.Name} ({lowest.Score:0.00}%)";
+            lblHighest.Text = $"Highest Component: {highest.Name} ({highest.Score:0.00}%)";
+
+            if (passed)
+            {
+                lblResult.ForeColor = Color.FromArgb(34, 160, 90);
+                lblResult.Text = $"{subject}: {weightedAverage:0.00}% \u2014 PASSED";
+            }
+            else
+            {
+                lblResult.ForeColor = Color.FromArgb(214, 69, 69);
+                lblResult.Text = $"{subject}: {weightedAverage:0.00}% \u2014 FAILED";
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtStudentName.Clear();
+            txtSubject.Clear();
+            txtPerformanceTask.Clear();
+            txtQuiz.Clear();
+            txtQuizTotal.Clear();
+            txtExam.Clear();
+            txtExamTotal.Clear();
+
+            gradeComponents.Clear();
+
+            lblStudentResult.Text = "Student: \u2014";
+            lblSubjectResult.Text = "Subject: \u2014";
+            lblAverage.Text = "Weighted Average: \u2014";
+            lblLowest.Text = "Lowest Component: \u2014";
+            lblHighest.Text = "Highest Component: \u2014";
+            lblResult.ForeColor = Color.FromArgb(110, 116, 130);
+            lblResult.Text = "Enter grades and click Evaluate Grade.";
+
+            txtStudentName.Focus();
+        }
+    }
